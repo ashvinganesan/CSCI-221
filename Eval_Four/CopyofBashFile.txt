@@ -1,0 +1,4 @@
+export PS1='[\u@\h \W]$ ' # Set the command prompt to host and working dir
+alias ..="cd .."
+alias ll="ls -l"
+alias t="touch"
