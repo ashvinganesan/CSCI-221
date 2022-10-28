@@ -1,0 +1,4 @@
+Exponent is 2^4 -1 - 7 = 8 as such we are multiplying by 2^8. 
+The largest sig is 111 or (½ + ¼ + ⅛)*256 = 224 vs (½+¼)*8  = 192. As such 224-192 = 32. 
+There is a 32int difference 
+
