@@ -1,11 +1,37 @@
 addiu $s0, $zero, 0 
 addiu $s1, $zero, 0 
 addiu $s2, $zero, 0 
+addiu $s3, $zero, 0
 addiu $t3, $zero, 0 # Counter
-lw $t4, 0($a0) # Counter
+
+lw $t5, 0($a0) # Value of pointer
 
 Loop:   beq $t3, $a1, Exit
-        lw $t4, 
+        sll $t4, $t3, 2
+        addu $t6, $t4, $a0
+        lw $t5, 0($t4) # Value of pointer
+        addiu $t3, $t3, 1 #inc counter
+
+        slti $v0, $t5, $s0
+        bne $v0, 0, Inc_Zero
+        slti $v0, $t5, $s1
+        bne $v0, 0, Inc_One
+        slti $v0, $t5, $s2
+        bne $v0, 0, Inc_Two
+        slti $v0, $t5, $s3
+        beq $v0, 0, Inc_Three
+        j Loop
+Inc_Zero:
+        addiu $s0, $s0, 1
+        j Loop
+Inc_One:
+        addiu $s1, $s1, 1
+        j Loop
+Inc_Two:
+        addiu $s2, $s2, 1
+        j Loop
+Inc_Three:
+        addiu $s3, $s3, 1
         j Loop
 Exit:   
     

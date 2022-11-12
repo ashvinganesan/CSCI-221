@@ -1,0 +1,15 @@
+addiu $v0, $zero, 0 #return value
+addiu $t0, $a0, 0 # Next linked 
+lhu $t1, 16($t0) #loads lower half(pointer)
+lhu $t2, 0($t0) # loads upper half(value)
+addu $v0, $v0, $t2
+
+Loop:   beq $t1, 0, Exit
+        addiu $t0, $t1, 0 # Next linked 
+        lhu $t1, 16($t0) #loads lower half(pointer)
+        lhu $t2, 0($t0) # loads upper half(value)
+        addu $v0, $v0, $t2
+        j Loop
+
+Exit:   
+    
