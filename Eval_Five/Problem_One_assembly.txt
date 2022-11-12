@@ -1,0 +1,15 @@
+#assume n = $a0 we will store our result in $v0
+addiu $t0, $zero, 0 #f1
+addiu $t1, $zero, 1 #f2
+addu $t2, $t0, $t1 #f3
+addiu $t3, $zero, 1 # Counter
+#addiu $a0, $zero, 8 # This line simply sets n so I can test properly
+
+Loop:   beq $t3, $a0, Exit
+        addu $t2, $t0, $t1 
+        addu $t0, $zero, $t1
+        addu $t1, $zero, $t2
+        addiu $t3, $t3, 1
+        j Loop
+Exit:   
+    addu $v0, $zero, $t0

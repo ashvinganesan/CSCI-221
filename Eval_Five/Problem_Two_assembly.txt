@@ -1,0 +1,11 @@
+addiu $s0, $zero, 0 
+addiu $s1, $zero, 0 
+addiu $s2, $zero, 0 
+addiu $t3, $zero, 0 # Counter
+lw $t4, 0($a0) # Counter
+
+Loop:   beq $t3, $a1, Exit
+        lw $t4, 
+        j Loop
+Exit:   
+    
