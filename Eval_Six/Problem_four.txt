@@ -1,0 +1,55 @@
+#the code for this one is pretty broken
+
+
+accumulatorExponent:
+        addiu   $sp,$sp,-40
+        sw      $ra,36($sp)
+        sw      $fp,32($sp)
+        move    $fp,$sp
+        sw      $f5,44($fp)
+        sw      $f4,40($fp)
+        sw      $f6,48($fp)
+        sw      $f7,52($fp)
+        sw      $t0,24($fp)
+        b       Loop
+
+Inside:
+        lw      $f2,24($fp)
+        sll     $f2,$f2,3
+        lw      $f3,48($fp)
+        addu    $f2,$3f,$f2
+        lw      $f3,4($2)
+        lw      $f2,0($2)
+        move    $f7,$f3
+        move    $f6,$f2
+        lw      $f5,44($fp)
+        lw      $f4,40($fp)
+
+        sw      $f3,44($fp)
+        sw      $f2,40($fp)
+        lw      $f2,24($fp)
+        addiu   $f2,$f2,1
+        sw      $f2,24($fp)
+Loop:
+        lw      $f3,24($fp)
+        lw      $f2,52($fp)
+        slt     $f2,$f3,$f2
+        bne     $f2,$t0, Inside
+
+Finish:
+        addiu   $t2,$fp,28
+        move    $t6,$t2
+        lw      $t5,44($fp)
+        lw      $t4,40($fp)
+        jal     frexp
+
+        move    $5,$3
+        move    $4,$2
+
+        sw      $2,28($fp)
+        lw      $2,28($fp)
+        move    $sp,$fp
+        lw      $ra,36($sp)
+        lw      $fp,32($sp)
+        addiu   $sp,$sp,40
+        jr      $ra
