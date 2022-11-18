@@ -1,0 +1,18 @@
+product:
+        addiu   $sp,$sp,-24
+        sw      $fp,20($sp)
+        move    $fp,$sp
+        sw      $t4,24($fp)
+        sw      $t5,28($fp)
+        lw      $t3,24($fp)
+        lw      $t2,28($fp)
+        mult    $t3,$t2
+        mflo    $t2
+        sw      $t2,12($fp)
+        sw      $t0,8($fp)
+        lw      $t3,12($fp)
+        lw      $t2,8($fp)
+        move    $sp,$fp
+        lw      $fp,20($sp)
+        addiu   $sp,$sp,24
+        jr      $ra
