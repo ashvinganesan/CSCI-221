@@ -10,6 +10,8 @@ Evaluation 7: C++ Intro Eval
 #include<list>
 #include <iterator>
 #include <vector>
+#include "compare.h"
+using namespace Mynamespace;
 using namespace std;
 
 class SortedList {
@@ -18,13 +20,16 @@ class SortedList {
         bool SortByString;
         
     public:
-        
+
         SortedList() : arr() {
             SortByString = true;
         }
         SortedList(list<string> l, bool sortByS) {
             arr = l;
             SortByString = sortByS;
+            if(!sortByS) {
+                using namespace Mynamespace;
+            }
         }
         SortedList(list<string> l) {
             arr = l;
@@ -32,6 +37,9 @@ class SortedList {
         }
         SortedList(bool sortByS) : arr() { 
             SortByString = sortByS;
+            if(!sortByS) {
+                using namespace Mynamespace;
+            }
         }
         void sortList() {
             arr.sort();
@@ -68,7 +76,7 @@ class SortedList {
             return arr.size();
         }
         string * returnArr() {
-            string retArr[length()];
+            string* retArr= new string[length()];
             list<string>::iterator it;
             int counter = 0;
             for (it=arr.begin(); it!=arr.end(); ++it) {
@@ -85,13 +93,16 @@ class SortedList {
                     return *it;
                 }
             }
+            return *arr.begin();
         }
         void SwapToStringSorted() {
             SortByString = true;
+            using namespace std;
             arr.sort();
         }
         void SwapToLenSorted() {
             SortByString = false;
+            using namespace Mynamespace;
             arr.sort();
         }
         bool SortedByString() {
