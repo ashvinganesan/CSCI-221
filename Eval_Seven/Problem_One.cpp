@@ -195,7 +195,7 @@ carArr canReach(struct Location pos, Car cars[], int carsLength, GasStation stat
             return ret;
 }
 
-
+ 
 int main() {
     // printf("test\n");
     Car car(100,100,10,10,20);

@@ -13,7 +13,7 @@ Evaluation 7: C++ Intro Eval
 #include "compare.h"
 using namespace Mynamespace;
 using namespace std;
-
+ 
 class SortedList {
     private:
         list<string> arr;
