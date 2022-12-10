@@ -8,7 +8,6 @@ Evaluation 8: C++ Advanced Eval
 #include <iostream>
 #include <cstring>
 #include <vector>
-#include <stack>
 #include <new>
 #include <memory>
 #include "NodePtr.h"
@@ -16,6 +15,7 @@ Evaluation 8: C++ Advanced Eval
 using namespace std;
 
 template <typename T>
+
 class Node {
 
     Node<T> *left;
@@ -40,7 +40,7 @@ class Node {
         }
 
         T getData() {
-            return data;
+            return &data;
         }
 
         void setLeft(Node<T> *l) {
